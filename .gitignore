@@ -1,0 +1,14 @@
+# macOS system files
+.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db
+
+# VS Code editor settings
+.vscode/
+
+# Log files
+*.log
+
+# Other
+bup

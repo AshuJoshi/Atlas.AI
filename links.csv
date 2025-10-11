@@ -1,0 +1,31 @@
+source,target,type
+microsoft,openai,Investment
+nvidia,openai,Investment
+softbank,openai,Investment
+oracle,openai,Data Center
+coreweave,openai,Data Center
+google,openai,Data Center
+openai,amd,Investment
+amd,openai,Hardware
+nvidia,coreweave,Investment
+nvidia,coreweave,Hardware
+nvidia,xai,Investment
+nvidia,microsoft,Hardware
+nvidia,oracle,Hardware
+nvidia,xai,Hardware
+nvidia,mistral,Hardware
+nvidia,amazon,Hardware
+nvidia,meta,Hardware
+amazon,anthropic,Investment
+google,anthropic,Investment
+meta,amazon,Model Hosting
+meta,google,Model Hosting
+xai,microsoft,Model Hosting
+meta,microsoft,Model Hosting
+nebius,microsoft,Data Center
+nvidia,nebius,Hardware
+broadcom,google,Custom ASIC
+marvell,amazon,Custom ASIC
+coreweave,microsoft,Data Center
+nvidia,xai,Investment
+anthropic,amazon,Model Hosting
