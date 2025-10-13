@@ -113,10 +113,40 @@ Promise.all([
         }
     });
 
-    node.append("text")
-        .attr("dy", 4).attr("text-anchor", "middle").text(d => d.name)
+    const textElements = node.append("text")
+        .attr("text-anchor", "middle")
         .style("font-size", "15px").style("fill", "#000").style("stroke", "#fff")
         .style("stroke-width", "0.3px").style("paint-order", "stroke");
+
+    // Company Name
+    textElements.append("tspan")
+        .attr("x", 0)
+        .text(d => d.name);
+
+    // Formatted Market Cap
+    textElements.append("tspan")
+        .attr("x", 0)
+        .attr("dy", "1.2em")
+        .style("font-size", "12px")
+        .text(d => {
+            if (d.type === 'Company' && d.market_cap && +d.market_cap > 0) {
+                const cap = +d.market_cap;
+                if (cap >= 1000) {
+                    return `$${(cap / 1000).toFixed(2)}T`;
+                }
+                return `$${cap}B`;
+            }
+            return "";
+        });
+
+    // Vertically center the text block
+    textElements.each(function(d) {
+        if (d.type === 'Company' && d.market_cap && +d.market_cap > 0) {
+            d3.select(this).attr("transform", "translate(0, -8)");
+        } else {
+            d3.select(this).attr("dy", 4);
+        }
+    });
 
     const legend = svg.append("g").attr("transform", `translate(${width - 150}, 20)`);
     const legendItems = legend.selectAll(".legend-item").data(categoryColor.domain().sort()).join("g")
