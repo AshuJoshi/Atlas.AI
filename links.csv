@@ -27,5 +27,15 @@ nvidia,nebius,Hardware
 broadcom,google,Custom ASIC
 marvell,amazon,Custom ASIC
 coreweave,microsoft,Data Center
-nvidia,xai,Investment
 anthropic,amazon,Model Hosting
+softbank,stargate,Investment
+openai,stargate,Investment
+oracle,stargate,Investment
+mgx,stargate,Investment
+arm,stargate,Tech Partner
+microsoft,stargate,Tech Partner
+nvidia,stargate,Tech Partner
+oracle,stargate,Tech Partner
+openai,stargate,Tech Partner
+amazon,rainier,Investment
+rainier,anthropic,Data Center

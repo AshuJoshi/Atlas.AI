@@ -1,16 +1,21 @@
-id,name,market_cap,category,logo
-openai,OpenAI,500,Foundation Model
-nvidia,Nvidia,4500,Chips
-microsoft,Microsoft,3900,Hyperscaler
-oracle,Oracle,823,Hyperscaler
-amd,AMD,260,Chips
-coreweave,CoreWeave,68,NeoCloud
-google,Google,2800,Hyperscaler
-amazon,Amazon,2337,Hyperscaler
-meta,Meta,1830,Foundation Model
-anthropic,Anthropic,185,Foundation Model
-softbank,SoftBank,213,Investor
-xai,xAI,200,Foundation Model
-nebius,Nebius,33,NeoCloud
-broadcom,Broadcom,1600,Chips
-marvell,Marvell,74,Chips
+id,name,market_cap,category,logo,type
+openai,OpenAI,500,Foundation Model,,Company
+nvidia,Nvidia,4500,Chips,,Company
+microsoft,Microsoft,3900,Hyperscaler,,Company
+oracle,Oracle,823,Hyperscaler,,Company
+amd,AMD,260,Chips,,Company
+coreweave,CoreWeave,68,NeoCloud,,Company
+google,Google,2800,Hyperscaler,,Company
+amazon,Amazon,2337,Hyperscaler,,Company
+meta,Meta,1830,Foundation Model,,Company
+anthropic,Anthropic,185,Foundation Model,,Company
+softbank,SoftBank,213,Investor,,Company
+xai,xAI,200,Foundation Model,,Company
+nebius,Nebius,33,NeoCloud,,Company
+broadcom,Broadcom,1680,Chips,,Company
+marvell,Marvell,74,Chips,,Company
+mistral,Mistral,6,Foundation Model,,Company
+stargate,Project Stargate,,Joint Venture,,Project
+arm,Arm,182,Chips,,Company
+mgx,MGX,100,Investor,,Company
+rainier,Project Rainier,,Compute Project,,Project

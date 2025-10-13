@@ -51,10 +51,19 @@ Promise.all([
         .domain([0, d3.max(nodes, d => d.market_cap)])
         .range([25, 120]);
 
+    const projectNodeSize = 80;
+
+    const getNodeRadius = d => {
+        if (d.type === 'Project') {
+            return projectNodeSize / 1.5;
+        }
+        return radiusScale(d.market_cap);
+    };
+
     const simulation = d3.forceSimulation(nodes)
         .force("link", d3.forceLink(validLinks).id(d => d.id).distance(200))
         .force("charge", d3.forceManyBody().strength(-600))
-        .force("collide", d3.forceCollide().radius(d => radiusScale(d.market_cap) + 5).strength(1))
+        .force("collide", d3.forceCollide().radius(d => getNodeRadius(d) + 5).strength(1))
         .force("center", d3.forceCenter(width / 2, height / 2));
 
     const container = svg.append("g");
@@ -84,10 +93,25 @@ Promise.all([
         .selectAll(".node").data(nodes).join("g")
         .attr("class", "node");
 
-    node.append("circle")
-        .attr("r", d => radiusScale(d.market_cap))
-        .attr("fill", d => d.logo ? `url(#logo-${d.id})` : categoryColor(d.category))
-        .style("cursor", "pointer");
+    node.each(function(d) {
+        const group = d3.select(this);
+        if (d.type === 'Project') {
+            group.append('rect')
+                .attr('width', projectNodeSize)
+                .attr('height', projectNodeSize)
+                .attr('x', -projectNodeSize / 2)
+                .attr('y', -projectNodeSize / 2)
+                .attr("rx", 4) // Rounded corners
+                .attr("ry", 4)
+                .attr("fill", categoryColor(d.category))
+                .style("cursor", "pointer");
+        } else {
+            group.append("circle")
+                .attr("r", d => radiusScale(d.market_cap))
+                .attr("fill", d => d.logo ? `url(#logo-${d.id})` : categoryColor(d.category))
+                .style("cursor", "pointer");
+        }
+    });
 
     node.append("text")
         .attr("dy", 4).attr("text-anchor", "middle").text(d => d.name)
@@ -100,7 +124,11 @@ Promise.all([
     legendItems.append("rect").attr("width", 15).attr("height", 15).attr("fill", d => categoryColor(d));
     legendItems.append("text").attr("x", 20).attr("y", 12).text(d => d).style("font-size", "12px");
     
-    const linkLegend = svg.append("g").attr("transform", `translate(${width - 150}, 150)`);
+    // Position the link legend dynamically below the category legend
+    const categoryLegendHeight = categoryColor.domain().length * 20;
+    const linkLegendYPosition = 20 + categoryLegendHeight + 40; // Start Y + height + padding
+
+    const linkLegend = svg.append("g").attr("transform", `translate(${width - 150}, ${linkLegendYPosition})`);
     const linkLegendItems = linkLegend.selectAll(".link-legend-item").data(color.domain().sort()).join("g")
         .attr("class", "link-legend-item").attr("transform", (d, i) => `translate(0, ${i * 20})`);
     linkLegendItems.append("rect").attr("width", 15).attr("height", 2).attr("fill", d => color(d));
@@ -125,8 +153,8 @@ Promise.all([
 
     function ticked() {
         link.attr("d", d => {
-            const sourceRadius = radiusScale(d.source.market_cap);
-            const targetRadius = radiusScale(d.target.market_cap);
+            const sourceRadius = getNodeRadius(d.source);
+            const targetRadius = getNodeRadius(d.target);
             const dx = d.target.x - d.source.x;
             const dy = d.target.y - d.source.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
@@ -150,7 +178,7 @@ Promise.all([
         
         node.attr("transform", d => `translate(${d.x}, ${d.y})`)
             .each(function(d) {
-                const radius = radiusScale(d.market_cap);
+                const radius = getNodeRadius(d);
                 d.x = Math.max(radius, Math.min(width - radius, d.x));
                 d.y = Math.max(radius, Math.min(height - radius, d.y));
             });
