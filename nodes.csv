@@ -1,19 +1,19 @@
 id,name,market_cap,category,logo,type
 openai,OpenAI,500,Foundation Model,,Company
-nvidia,Nvidia,4500,Chips,,Company
-microsoft,Microsoft,3900,Hyperscaler,,Company
-oracle,Oracle,823,Hyperscaler,,Company
+nvidia,Nvidia,4580,Chips,,Company
+microsoft,Microsoft,3820,Hyperscaler,,Company
+oracle,Oracle,878,Hyperscaler,,Company
 amd,AMD,260,Chips,,Company
 coreweave,CoreWeave,68,NeoCloud,,Company
-google,Google,2800,Hyperscaler,,Company
-amazon,Amazon,2337,Hyperscaler,,Company
+google,Google,2960,Hyperscaler,,Company
+amazon,Amazon,2350,Hyperscaler,,Company
 meta,Meta,1830,Foundation Model,,Company
 anthropic,Anthropic,185,Foundation Model,,Company
 softbank,SoftBank,213,Investor,,Company
 xai,xAI,200,Foundation Model,,Company
-nebius,Nebius,33,NeoCloud,,Company
+nebius,Nebius,34,NeoCloud,,Company
 broadcom,Broadcom,1680,Chips,,Company
-marvell,Marvell,74,Chips,,Company
+marvell,Marvell,77,Chips,,Company
 mistral,Mistral,6,Foundation Model,,Company
 stargate,Project Stargate,,Joint Venture,,Project
 arm,Arm,182,Chips,,Company
