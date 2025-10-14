@@ -10,22 +10,29 @@ The visualization is built using the D3.js library and is rendered in your brows
 
 ---
 
-#### Features
+### Key Features
 
-* **Interactive Physics Simulation:** Nodes arrange themselves naturally and can be dragged and dropped.
-* **Data-Driven:** The entire graph is generated from two simple CSV files (`nodes.csv` and `links.csv`).
-* **Proportional Sizing:** The size of each company's circle is proportional to its market valuation.
-* **Categorical Coloring:** Nodes are colored by category (Hyperscaler, Chip/Semi, etc.) for easy identification.
-* **Curved & Parallel Links:** Multiple relationships between the same two companies are visualized as distinct, curved paths.
+*   **Interactive Physics Simulation:** Nodes arrange themselves naturally based on a force-directed simulation.
+*   **Data-Driven:** The entire graph is generated from simple data files (`nodes.csv`, `links.csv`, `references.json`).
+*   **Rich Interaction Model:**
+    *   **Node Isolation:** Click any node to fade out the rest of the graph and focus on its immediate connections.
+    *   **Legend Filtering:** Click any category in the legend to highlight all associated nodes and their neighbors.
+    *   **Detailed Sourcing:** Click any connection to view details and links to source articles.
+    *   **Manual Layout:** Drag nodes to pin them in place; double-click to release them back into the simulation.
+*   **Proportional & Shaped Nodes:**
+    *   Company nodes are circular, with a size proportional to their market valuation.
+    *   Valuations are displayed directly on the node (e.g., $500B or $4.58T).
+    *   Abstract 'Project' nodes are represented as squares.
+*   **Categorical Coloring:** Nodes are colored by category (e.g., Hyperscaler, Foundation Model) for easy identification.
 
-#### Technology Stack
+### Technology Stack
 
-* HTML5
-* CSS3
-* JavaScript (ES6)
-* D3.js (v7)
+*   HTML5
+*   CSS3
+*   JavaScript (ES6)
+*   D3.js (v7)
 
-#### How to Run Locally
+### How to Run Locally
 
 1.  Clone this repository.
 2.  Navigate into the project directory.
@@ -39,16 +46,28 @@ The visualization is built using the D3.js library and is rendered in your brows
     ```
 4.  Open your browser and navigate to `http://localhost:8000`.
 
-#### Data
+### Data Structure
 
-Note - the market valuations are bases on data as of September/October 2025.
+The visualization is powered by three files in the root directory:
 
-The visualization is powered by two files:
-* `nodes.csv`: Defines the companies, their market caps, and categories.
-* `links.csv`: Defines the relationships between companies. The direction of the arrow follows a "Provider → Consumer" logic.
+*   `nodes.csv`: Defines the entities (companies and projects).
+    *   `id`: Unique identifier for the node.
+    *   `name`: Display name.
+    *   `market_cap`: Market capitalization in billions. Blank for projects.
+    *   `category`: Functional grouping (e.g., 'Chips', 'Hyperscaler').
+    *   `logo`: (Optional) Path to a logo file.
+    *   `type`: The entity type, either 'Company' or 'Project'.
+*   `links.csv`: Defines the relationships between entities.
+    *   `source`: The `id` of the source node.
+    *   `target`: The `id` of the target node.
+    *   `type`: The category of the link (e.g., 'Investment', 'Hardware').
+    *   `reference_id`: An ID that maps to an entry in `references.json`.
+*   `references.json`: Stores the source articles and details for relationships.
+    *   Contains a dictionary where keys match the `reference_id` from `links.csv`.
+    *   Each entry contains a list of sources with a `url`, `title`, and `publication_date`.
 
-To add or change the data, simply edit these CSV files.
+To add or change the data, simply edit these files.
 
-#### License
+### License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
