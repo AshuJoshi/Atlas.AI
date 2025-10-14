@@ -112,11 +112,19 @@ Promise.all([
 
     
 
-            let selectedLink = null;
+                let selectedLink = null;
 
     
 
-            let isolatedNode = null;
+                let isolatedNode = null;
+
+    
+
+                let legendItems = null; // Declare upfront to solve reference error
+
+    
+
+                let linkLegendItems = null;
 
     
 
@@ -160,15 +168,31 @@ Promise.all([
 
     
 
-                node.style("opacity", 1);
+                        node.style("opacity", 1);
 
     
 
-                link.style("opacity", 0.6);
+                        link.style("opacity", 0.6);
 
     
 
-                isolatedNode = null;
+                        isolatedNode = null;
+
+    
+
+                
+
+    
+
+                        // Clear legend filters
+
+    
+
+                        if (legendItems) legendItems.style("opacity", 1);
+
+    
+
+                        if (linkLegendItems) linkLegendItems.style("opacity", 1);
 
     
 
@@ -580,18 +604,66 @@ Promise.all([
     });
 
     const legend = svg.append("g").attr("transform", `translate(${width - 150}, 20)`);
-    const legendItems = legend.selectAll(".legend-item").data(categoryColor.domain().sort()).join("g")
-        .attr("class", "legend-item").attr("transform", (d, i) => `translate(0, ${i * 20})`);
+    legendItems = legend.selectAll(".legend-item").data(categoryColor.domain().sort()).join("g")
+        .attr("class", "legend-item").attr("transform", (d, i) => `translate(0, ${i * 20})`)
+        .style("cursor", "pointer")
+        .on("click", (event, d) => {
+            event.stopPropagation();
+            const isAlreadySelected = d3.select(event.currentTarget).style("opacity") == 1 && legendItems.filter(item => item !== d).style("opacity") != 1;
+
+            clearDisplayModes();
+
+            if (isAlreadySelected) return;
+
+            legendItems.style("opacity", item => (item === d) ? 1 : 0.3);
+
+            const primaryNodeIds = new Set(nodes.filter(n => n.category === d).map(n => n.id));
+            const neighborNodeIds = new Set();
+
+            link.style("opacity", l => {
+                const sourceIn = primaryNodeIds.has(l.source.id);
+                const targetIn = primaryNodeIds.has(l.target.id);
+                if (sourceIn || targetIn) {
+                    neighborNodeIds.add(l.source.id);
+                    neighborNodeIds.add(l.target.id);
+                    return 0.6;
+                }
+                return 0.1;
+            });
+            node.style("opacity", n => neighborNodeIds.has(n.id) ? 1 : 0.1);
+        });
+
     legendItems.append("rect").attr("width", 15).attr("height", 15).attr("fill", d => categoryColor(d));
     legendItems.append("text").attr("x", 20).attr("y", 12).text(d => d).style("font-size", "12px");
     
-    // Position the link legend dynamically below the category legend
     const categoryLegendHeight = categoryColor.domain().length * 20;
-    const linkLegendYPosition = 20 + categoryLegendHeight + 40; // Start Y + height + padding
+    const linkLegendYPosition = 20 + categoryLegendHeight + 40;
 
     const linkLegend = svg.append("g").attr("transform", `translate(${width - 150}, ${linkLegendYPosition})`);
-    const linkLegendItems = linkLegend.selectAll(".link-legend-item").data(color.domain().sort()).join("g")
-        .attr("class", "link-legend-item").attr("transform", (d, i) => `translate(0, ${i * 20})`);
+    linkLegendItems = linkLegend.selectAll(".link-legend-item").data(color.domain().sort()).join("g")
+        .attr("class", "link-legend-item").attr("transform", (d, i) => `translate(0, ${i * 20})`)
+        .style("cursor", "pointer")
+        .on("click", (event, d) => {
+            event.stopPropagation();
+            const isAlreadySelected = d3.select(event.currentTarget).style("opacity") == 1 && linkLegendItems.filter(item => item !== d).style("opacity") != 1;
+
+            clearDisplayModes();
+
+            if (isAlreadySelected) return;
+
+            linkLegendItems.style("opacity", item => (item === d) ? 1 : 0.3);
+            link.style("opacity", l => (l.type === d) ? 0.6 : 0.1);
+
+            const connectedNodeIds = new Set();
+            link.each(l => {
+                if (l.type === d) {
+                    connectedNodeIds.add(l.source.id);
+                    connectedNodeIds.add(l.target.id);
+                }
+            });
+            node.style("opacity", n => connectedNodeIds.has(n.id) ? 1 : 0.1);
+        });
+
     linkLegendItems.append("rect").attr("width", 15).attr("height", 2).attr("fill", d => color(d));
     linkLegendItems.append("text").attr("x", 20).attr("y", 4).text(d => d).style("font-size", "12px");
 
