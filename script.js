@@ -274,7 +274,7 @@ Promise.all([
 
     
 
-                    let htmlContent = `<strong>${d.type} Relationship</strong>`;
+                    let htmlContent = `<strong>${d.type}</strong>`;
 
     
 
