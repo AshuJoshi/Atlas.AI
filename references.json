@@ -1,0 +1,126 @@
+{
+  "stargate_announcement": [
+    {
+      "url": "https://openai.com/index/announcing-the-stargate-project/",
+      "title": "OpenAI announces the Stargate project",
+      "publication_date": "2025-01-25"
+    }
+  ],
+  "amazon_anthropic_deal": [
+    {
+      "url": "https://www.aboutamazon.com/news/aws/amazon-invests-additional-4-billion-anthropic-ai",
+      "title": "Amazon and Anthropic deepen strategic collaboration",
+      "publication_date": "2024-11-24"
+    },
+    {
+      "url": "https://www.aboutamazon.com/news/company-news/amazon-anthropic-ai-investment",
+      "title": "Amazon and Anthropic deepen their shared commitment to advancing generative AI",
+      "publication_date": "2024-03-27"
+    }
+  ],
+  "project_rainier": [
+    {
+      "url": "https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster",
+      "title": "Meet Project Rainier, Amazon’s one-of-a-kind machine ushering in the next generation of AI",
+      "publication_date": "2024-12-04"
+    },
+    {
+      "url": "https://www.anthropic.com/news/trainium2-and-distillation",
+      "title": "Claude 3.5 Haiku on AWS Trainium2 and model distillation in Amazon Bedrock",
+      "publication_date": "2024-12-03"    
+    },
+    {
+      "url": "https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster",
+      "title": "Meet Project Rainier, Amazon’s one-of-a-kind machine ushering in the next generation of AI",
+      "publication_date": "2025-06-24"    
+    }
+  ],
+  "openai_broadcom_strategic": [
+    {
+      "url": "",
+      "title": "OpenAI and Broadcom announce strategic collaboration to deploy 10 gigawatts of OpenAI-designed AI accelerators",
+      "publication_date": "2025-10-13"
+    }
+  ],
+  "microsoft_nebius_deal": [
+    {
+      "url": "https://nebius.com/newsroom/nebius-announces-multi-billion-dollar-agreement-with-microsoft-for-ai-infrastructure",
+      "title": "Nebius announces multi-billion dollar agreement with Microsoft for AI infrastructure",
+      "publication_date": "2025-09-08"
+    }
+  ],
+  "coreweave_openai_deal": [
+    {
+      "url": "https://investors.coreweave.com/news/news-details/2025/CoreWeave-Expands-Agreement-with-OpenAI-by-up-to-6-5B",
+      "title": "CoreWeave Expands Agreement with OpenAI by up to $6.5B",
+      "publication_date": "2025-09-25"
+    }
+  ],
+  "softbank_openai": [
+    {
+      "url": "https://www.reuters.com/technology/artificial-intelligence/openai-raise-40-billion-softbank-led-new-funding-2025-03-31/",
+      "title": "OpenAI to raise $40 billion in SoftBank-led round to boost AI efforts",
+      "publication_date": "2025-04-01"      
+    }
+  ],
+  "openai_amd": [
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1260/amd-and-openai-announce-strategic-partnership-to-deploy-6-gigawatts-of-amd-gpus",
+      "title": "AMD and OpenAI Announce Strategic Partnership to Deploy 6 Gigawatts of AMD GPUs",
+      "publication_date": "2025-10-06"
+    }
+  ],
+  "google_anthropic": [
+    {
+      "url": "https://www.forbes.com/sites/qai/2023/10/31/google-invests-in-anthropic-for-2-billion-as-ai-race-heats-up/",
+      "title": "Google Invests In Anthropic For $2 Billion As AI Race Heats Up",
+      "publication_date": "2023-10-31"
+    },
+    {
+      "url": "https://www.reuters.com/technology/google-agrees-invest-up-2-bln-openai-rival-anthropic-wsj-2023-10-27",
+      "title": "Google agrees to invest up to $2 billion in OpenAI rival Anthropic",
+      "publication_date": "2023-10-27"
+    },
+    {
+      "url": "https://www.nytimes.com/2025/03/11/technology/google-investment-anthropic.html",
+      "title": "Inside Google’s Investment in the A.I. Start-Up Anthropic",
+      "publication_date": "2025-03-11"
+    },
+    {
+      "url": "https://www.cnbc.com/2025/01/22/google-agrees-to-new-1-billion-investment-in-anthropic.html",
+      "title": "Google agrees to new $1 billion investment in Anthropic",
+      "publication_date": "2025-01-25"
+    }
+  ],
+  "openai_nvidia": [
+    {
+      "url": "https://nvidianews.nvidia.com/news/openai-and-nvidia-announce-strategic-partnership-to-deploy-10gw-of-nvidia-systems",
+      "title": "OpenAI and NVIDIA Announce Strategic Partnership to Deploy 10 Gigawatts of NVIDIA Systems",
+      "publication_date": "2025-09-25"
+    }
+  ],
+  "openai_oracle": [
+    {
+      "url": "https://openai.com/index/stargate-advances-with-partnership-with-oracle/",
+      "title": "Stargate advances with 4.5 GW partnership with Oracle",
+      "publication_date": "205-07-22"
+    },
+    {
+      "url": "https://openai.com/index/five-new-stargate-sites/",
+      "title": "OpenAI, Oracle, and SoftBank expand Stargate with five new AI data center sites",
+      "publication_date": "2025-09-23"
+    },
+    {
+      "url": "https://www.wsj.com/business/openai-oracle-sign-300-billion-computing-deal-among-biggest-in-history-ff27c8fe",
+      "title": "Oracle, OpenAI Sign $300 Billion Cloud Deal",
+      "publication_date": "2025-09-10"
+    }
+  ],
+  "oracle_nvidia": [
+    {
+      "url": "https://www.networkworld.com/article/3995015/oracle-to-spend-40b-on-nvidia-chips-for-openai-data-center-in-texas.html",
+      "title": "Oracle to spend $40B on Nvidia chips for OpenAI data center in Texas",
+      "publication_date": "2025-05-26"
+    }
+  ]
+}

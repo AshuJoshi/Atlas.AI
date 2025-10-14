@@ -1,42 +1,42 @@
-source,target,type
-microsoft,openai,Investment
-nvidia,openai,Investment
-softbank,openai,Investment
-oracle,openai,Data Center
-coreweave,openai,Data Center
-google,openai,Data Center
-openai,amd,Investment
-amd,openai,Hardware
-nvidia,coreweave,Investment
-nvidia,coreweave,Hardware
-nvidia,xai,Investment
-nvidia,microsoft,Hardware
-nvidia,oracle,Hardware
-nvidia,xai,Hardware
-nvidia,mistral,Hardware
-nvidia,amazon,Hardware
-nvidia,meta,Hardware
-amazon,anthropic,Investment
-google,anthropic,Investment
-meta,amazon,Model Hosting
-meta,google,Model Hosting
-xai,microsoft,Model Hosting
-meta,microsoft,Model Hosting
-nebius,microsoft,Data Center
-nvidia,nebius,Hardware
-broadcom,google,Custom ASIC
-marvell,amazon,Custom ASIC
-coreweave,microsoft,Data Center
-anthropic,amazon,Model Hosting
-softbank,stargate,Investment
-openai,stargate,Investment
-oracle,stargate,Investment
-mgx,stargate,Investment
-arm,stargate,Tech Partner
-microsoft,stargate,Tech Partner
-nvidia,stargate,Tech Partner
-oracle,stargate,Tech Partner
-openai,stargate,Tech Partner
-amazon,rainier,Investment
-rainier,anthropic,Data Center
-broadcom,openai,Custom ASIC
+source,target,type,reference_id
+microsoft,openai,Investment,
+nvidia,openai,Investment,openai_nvidia
+softbank,openai,Investment,softbank_openai
+oracle,openai,Data Center,openai_oracle
+coreweave,openai,Data Center,coreweave_openai_deal
+google,openai,Data Center,
+openai,amd,Investment,openai_amd
+amd,openai,Hardware,openai_amd
+nvidia,coreweave,Investment,
+nvidia,coreweave,Hardware,
+nvidia,xai,Investment,
+nvidia,microsoft,Hardware,
+nvidia,oracle,Hardware,oracle_nvidia
+nvidia,xai,Hardware,
+nvidia,mistral,Hardware,
+nvidia,amazon,Hardware,
+nvidia,meta,Hardware,
+amazon,anthropic,Investment,amazon_anthropic_deal
+google,anthropic,Investment,google_anthropic
+meta,amazon,Model Hosting,
+meta,google,Model Hosting,
+xai,microsoft,Model Hosting,
+meta,microsoft,Model Hosting,
+nebius,microsoft,Data Center,microsoft_nebius_deal
+nvidia,nebius,Hardware,
+broadcom,google,Custom ASIC,
+marvell,amazon,Custom ASIC,
+coreweave,microsoft,Data Center,
+anthropic,amazon,Model Hosting,
+softbank,stargate,Investment,stargate_announcement
+openai,stargate,Investment,stargate_announcement
+oracle,stargate,Investment,stargate_announcement
+mgx,stargate,Investment,stargate_announcement
+arm,stargate,Tech Partner,stargate_announcement
+microsoft,stargate,Tech Partner,stargate_announcement
+nvidia,stargate,Tech Partner,stargate_announcement
+oracle,stargate,Tech Partner,stargate_announcement
+openai,stargate,Tech Partner,stargate_announcement
+amazon,rainier,Investment,project_rainier
+rainier,anthropic,Data Center,project_rainier
+broadcom,openai,Custom ASIC,openai_broadcom_strategic

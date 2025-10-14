@@ -16,13 +16,34 @@
     </div>
 
     <div id="chart"></div>
+
+    <div style="text-align: center; font-size: 12px; color: #555; margin-top: 24px;">
+        <p style="margin: 0;">Market cap data updated: October 13, 2025</p>
+        <a href="https://www.bloomberg.com/news/features/2025-10-07/openai-s-nvidia-amd-deals-boost-1-trillion-ai-boom-with-circular-deals">Inspired by Bloomberg</a>
+    </div>
+
+    <div id="instructions">
+        <h2>How to Use This Map</h2>
+        <ul>
+            <li><b>Zoom & Pan:</b> Use your mouse wheel to zoom in and out. Click and drag the background to pan the view.</li>
+            <li><b>Arrange Nodes:</b> Click and drag any company or project to pin it in place. This lets you untangle the graph and explore connections.</li>
+            <li><b>Release Node:</b> Double-click a pinned node to release it back into the physics simulation.</li>
+            <li><b>View Details:</b> Hover over a connection to highlight it, then click it to see more details and source links. Click the background to hide the details.</li>
+            <li><b>Reset:</b> Click the "Reset View" button to un-pin all nodes and return to the default zoom.</li>
+        </ul>
+    </div>
+
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="script.js"></script>
-    <div>
+    <!-- <div>
         <br />
         <a href="https://www.bloomberg.com/news/features/2025-10-07/openai-s-nvidia-amd-deals-boost-1-trillion-ai-boom-with-circular-deals">
             Inspired by Bloomberg
         </a>
+    </div> -->
+
+    <div id="sources-list">
+        <h2>Sources</h2>
     </div>
 </body>
 </html>

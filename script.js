@@ -7,6 +7,10 @@ const svg = d3.select("#chart")
     .attr("width", width)
     .attr("height", height);
 
+// Tooltip
+const tooltip = d3.select("body").append("div")
+    .attr("class", "tooltip");
+
 // Color scales
 const color = d3.scaleOrdinal(d3.schemeCategory10);
 const categoryColor = d3.scaleOrdinal(d3.schemeSet2);
@@ -14,8 +18,9 @@ const categoryColor = d3.scaleOrdinal(d3.schemeSet2);
 // Load data
 Promise.all([
     d3.csv("nodes.csv"),
-    d3.csv("links.csv")
-]).then(([nodes, links]) => {
+    d3.csv("links.csv"),
+    d3.json("references.json")
+]).then(([nodes, links, references]) => {
 
     // 2. DATA PROCESSING
     nodes.forEach(d => {
@@ -83,35 +88,291 @@ Promise.all([
         .append("image").attr("href", d => d.logo)
         .attr("x", 0).attr("y", 0).attr("width", 50).attr("height", 50);
 
-    const link = container.append("g")
-        .attr("stroke-opacity", 0.6).attr("fill", "none")
-        .selectAll("path").data(validLinks).join("path")
-        .attr("stroke", d => color(d.type)).attr("stroke-width", 2)
-        .attr("marker-end", d => `url(#arrow-${d.type.replace(/\s+/g, '-')})`);
+        const link = container.append("g")
 
-    const node = container.append("g")
-        .selectAll(".node").data(nodes).join("g")
-        .attr("class", "node");
+            .attr("stroke-opacity", 0.6).attr("fill", "none")
 
-    node.each(function(d) {
-        const group = d3.select(this);
-        if (d.type === 'Project') {
-            group.append('rect')
-                .attr('width', projectNodeSize)
-                .attr('height', projectNodeSize)
-                .attr('x', -projectNodeSize / 2)
-                .attr('y', -projectNodeSize / 2)
-                .attr("rx", 4) // Rounded corners
-                .attr("ry", 4)
-                .attr("fill", categoryColor(d.category))
-                .style("cursor", "pointer");
-        } else {
-            group.append("circle")
-                .attr("r", d => radiusScale(d.market_cap))
-                .attr("fill", d => d.logo ? `url(#logo-${d.id})` : categoryColor(d.category))
-                .style("cursor", "pointer");
+            .selectAll("path").data(validLinks).join("path")
+
+            .attr("stroke", d => color(d.type)).attr("stroke-width", 2)
+
+            .attr("marker-end", d => `url(#arrow-${d.type.replace(/\s+/g, '-')})`);
+
+    
+
+        const node = container.append("g")
+
+            .selectAll(".node").data(nodes).join("g")
+
+            .attr("class", "node");
+
+    
+
+        // --- Click-to-pin Tooltip & Selection Logic ---
+
+        let selectedLink = null;
+
+    
+
+        function clearSelection() {
+
+            tooltip.style("opacity", 0).style("pointer-events", "none");
+
+            link.attr("stroke-width", 2).attr("stroke-opacity", 0.6);
+
+            selectedLink = null;
+
         }
-    });
+
+    
+
+            svg.on("click", (event) => {
+
+    
+
+                // Check if the click is on the background, not on a node
+
+    
+
+                if (event.target.tagName === 'svg') {
+
+    
+
+                    clearSelection();
+
+    
+
+                }
+
+    
+
+            });
+
+    
+
+        
+
+    
+
+            link
+
+    
+
+                .on("mouseover", function() {
+
+    
+
+                    if (selectedLink !== this) {
+
+    
+
+                        d3.select(this).attr("stroke-width", 4).attr("stroke-opacity", 1);
+
+    
+
+                    }
+
+    
+
+                })
+
+    
+
+                .on("mouseout", function() {
+
+    
+
+                    if (selectedLink !== this) {
+
+    
+
+                        d3.select(this).attr("stroke-width", 2).attr("stroke-opacity", 0.6);
+
+    
+
+                    }
+
+    
+
+                })
+
+    
+
+                .on("click", function(event, d) {
+
+    
+
+                    event.stopPropagation();
+
+    
+
+                    
+
+    
+
+                    // If the clicked link is already selected, deselect it
+
+    
+
+                    if (selectedLink === this) {
+
+    
+
+                        return clearSelection();
+
+    
+
+                    }
+
+    
+
+        
+
+    
+
+                    clearSelection();
+
+    
+
+                    selectedLink = this;
+
+    
+
+        
+
+    
+
+                    d3.select(this).attr("stroke-width", 4).attr("stroke-opacity", 1);
+
+    
+
+        
+
+    
+
+                    const referenceData = references[d.reference_id];
+
+    
+
+                    if (!referenceData) return;
+
+    
+
+        
+
+    
+
+                    // Sort references by date, newest first
+
+    
+
+                    referenceData.sort((a, b) => new Date(b.publication_date) - new Date(a.publication_date));
+
+    
+
+        
+
+    
+
+                    let htmlContent = `<strong>${d.type} Relationship</strong>`;
+
+    
+
+                    if (d.details) {
+
+    
+
+                        htmlContent += `<br/>${d.details}`;
+
+    
+
+                    }
+
+    
+
+                    htmlContent += `<hr/>`;
+
+    
+
+                    referenceData.forEach(ref => {
+
+    
+
+                        htmlContent += `<a href="${ref.url}" target="_blank">${ref.title}</a><br/>`;
+
+    
+
+                    });
+
+    
+
+        
+
+    
+
+                    tooltip.html(htmlContent)
+
+    
+
+                        .style("left", (event.pageX + 15) + "px")
+
+    
+
+                        .style("top", (event.pageY - 28) + "px")
+
+    
+
+                        .style("opacity", 1)
+
+    
+
+                        .style("pointer-events", "auto");
+
+    
+
+                });
+
+    
+
+    
+
+        node.each(function(d) {
+
+            const group = d3.select(this);
+
+            if (d.type === 'Project') {
+
+                group.append('rect')
+
+                    .attr('width', projectNodeSize)
+
+                    .attr('height', projectNodeSize)
+
+                    .attr('x', -projectNodeSize / 2)
+
+                    .attr('y', -projectNodeSize / 2)
+
+                    .attr("rx", 4) // Rounded corners
+
+                    .attr("ry", 4)
+
+                    .attr("fill", categoryColor(d.category))
+
+                    .style("cursor", "pointer");
+
+            } else {
+
+                group.append("circle")
+
+                    .attr("r", d => radiusScale(d.market_cap))
+
+                    .attr("fill", d => d.logo ? `url(#logo-${d.id})` : categoryColor(d.category))
+
+                    .style("cursor", "pointer");
+
+            }
+
+        });
 
     const textElements = node.append("text")
         .attr("text-anchor", "middle")
@@ -163,6 +424,29 @@ Promise.all([
         .attr("class", "link-legend-item").attr("transform", (d, i) => `translate(0, ${i * 20})`);
     linkLegendItems.append("rect").attr("width", 15).attr("height", 2).attr("fill", d => color(d));
     linkLegendItems.append("text").attr("x", 20).attr("y", 4).text(d => d).style("font-size", "12px");
+
+    // --- Helper Functions ---
+    function formatDate(dateString) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString(undefined, options);
+    }
+
+    // --- Populate Sources List ---
+    function populateSourcesList(references) {
+        const allRefs = Object.values(references).flat();
+        const uniqueRefs = [...new Map(allRefs.map(item => [item['url'], item])).values()];
+        uniqueRefs.sort((a, b) => new Date(b.publication_date) - new Date(a.publication_date));
+
+        const sourcesList = d3.select("#sources-list");
+        sourcesList.selectAll(".source-item")
+            .data(uniqueRefs)
+            .join("div")
+            .attr("class", "source-item")
+            .html(d => `<a href="${d.url}" target="_blank">${d.title}</a> <span class="source-date">(${formatDate(d.publication_date)})</span>`);
+    }
+
+    populateSourcesList(references);
+
 
     // 4. SIMULATION & INTERACTIVITY
     
