@@ -122,5 +122,24 @@
       "title": "Oracle to spend $40B on Nvidia chips for OpenAI data center in Texas",
       "publication_date": "2025-05-26"
     }
+  ],
+  "openai_google": [
+    {
+      "url": "https://www.reuters.com/business/retail-consumer/openai-taps-google-unprecedented-cloud-deal-despite-ai-rivalry-sources-say-2025-06-10/",
+      "title": "Exclusive: OpenAI taps Google in unprecedented cloud deal despite AI rivalry, sources say",
+      "publication_date": "2025-06-10"
+    },
+    {
+      "url": "https://www.reuters.com/business/media-telecom/openai-lists-google-cloud-partner-amid-growing-demand-computing-capacity-2025-07-16/",
+      "title": "OpenAI lists Google as cloud partner amid growing demand for computing capacity",
+      "publication_date": "2025-07-16"    
+    }
+  ],
+  "coreweave_meta": [
+    {
+      "url": "https://www.reuters.com/technology/coreweave-signs-14-billion-ai-deal-with-meta-bloomberg-news-reports-2025-09-30/",
+      "title": "CoreWeave signs $14 billion AI infrastructure deal with Meta",
+      "publication_date": "2025-09-30"
+    }
   ]
 }

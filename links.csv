@@ -4,7 +4,7 @@ nvidia,openai,Investment,openai_nvidia
 softbank,openai,Investment,softbank_openai
 oracle,openai,Data Center,openai_oracle
 coreweave,openai,Data Center,coreweave_openai_deal
-google,openai,Data Center,
+google,openai,Data Center,openai_google
 openai,amd,Investment,openai_amd
 amd,openai,Hardware,openai_amd
 nvidia,coreweave,Investment,
@@ -40,3 +40,4 @@ openai,stargate,Tech Partner,stargate_announcement
 amazon,rainier,Investment,project_rainier
 rainier,anthropic,Data Center,project_rainier
 broadcom,openai,Custom ASIC,openai_broadcom_strategic
+coreweave,meta,Data Center,coreweave_meta
