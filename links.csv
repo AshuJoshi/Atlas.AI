@@ -9,7 +9,7 @@ openai,amd,Investment,openai_amd
 amd,openai,Hardware,openai_amd
 nvidia,coreweave,Investment,
 nvidia,coreweave,Hardware,
-nvidia,xai,Investment,
+nvidia,xai,Investment,nvidia_xai
 nvidia,microsoft,Hardware,
 nvidia,oracle,Hardware,oracle_nvidia
 nvidia,xai,Hardware,
@@ -26,7 +26,7 @@ nebius,microsoft,Data Center,microsoft_nebius_deal
 nvidia,nebius,Hardware,
 broadcom,google,Custom ASIC,
 marvell,amazon,Custom ASIC,
-coreweave,microsoft,Data Center,
+coreweave,microsoft,Data Center,coreweave_microsoft
 anthropic,amazon,Model Hosting,
 softbank,stargate,Investment,stargate_announcement
 openai,stargate,Investment,stargate_announcement
