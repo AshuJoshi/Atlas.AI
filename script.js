@@ -108,21 +108,75 @@ Promise.all([
 
     
 
-        // --- Click-to-pin Tooltip & Selection Logic ---
-
-        let selectedLink = null;
+            // --- Interaction Logic ---
 
     
 
-        function clearSelection() {
+            let selectedLink = null;
 
-            tooltip.style("opacity", 0).style("pointer-events", "none");
+    
 
-            link.attr("stroke-width", 2).attr("stroke-opacity", 0.6);
+            let isolatedNode = null;
 
-            selectedLink = null;
+    
 
-        }
+        
+
+    
+
+            function clearDisplayModes() {
+
+    
+
+                // Clear link selection
+
+    
+
+                tooltip.style("opacity", 0).style("pointer-events", "none");
+
+    
+
+                if(selectedLink) {
+
+    
+
+                    d3.select(selectedLink).attr("stroke-width", 2).attr("stroke-opacity", 0.6);
+
+    
+
+                }
+
+    
+
+                selectedLink = null;
+
+    
+
+        
+
+    
+
+                // Clear node isolation
+
+    
+
+                node.style("opacity", 1);
+
+    
+
+                link.style("opacity", 0.6);
+
+    
+
+                isolatedNode = null;
+
+    
+
+            }
+
+    
+
+        
 
     
 
@@ -130,19 +184,111 @@ Promise.all([
 
     
 
-                // Check if the click is on the background, not on a node
-
-    
-
                 if (event.target.tagName === 'svg') {
 
     
 
-                    clearSelection();
+                    clearDisplayModes();
 
     
 
                 }
+
+    
+
+            });
+
+    
+
+        
+
+    
+
+            node.on("click", function(event, d) {
+
+    
+
+                event.stopPropagation();
+
+    
+
+                clearDisplayModes();
+
+    
+
+                isolatedNode = d;
+
+    
+
+        
+
+    
+
+                const neighborIds = new Set();
+
+    
+
+                neighborIds.add(d.id);
+
+    
+
+        
+
+    
+
+                link.filter(l => {
+
+    
+
+                    if (l.source.id === d.id) {
+
+    
+
+                        neighborIds.add(l.target.id);
+
+    
+
+                        return true;
+
+    
+
+                    }
+
+    
+
+                    if (l.target.id === d.id) {
+
+    
+
+                        neighborIds.add(l.source.id);
+
+    
+
+                        return true;
+
+    
+
+                    }
+
+    
+
+                    return false;
+
+    
+
+                });
+
+    
+
+        
+
+    
+
+                node.style("opacity", n => neighborIds.has(n.id) ? 1 : 0.1);
+
+    
+
+                link.style("opacity", l => (l.source.id === d.id || l.target.id === d.id) ? 0.6 : 0.1);
 
     
 
@@ -198,139 +344,163 @@ Promise.all([
 
     
 
-                .on("click", function(event, d) {
+                        .on("click", function(event, d) {
 
     
 
-                    event.stopPropagation();
+                            event.stopPropagation();
 
     
 
-                    
+                
 
     
 
-                    // If the clicked link is already selected, deselect it
+                            // If this link is already selected, deselect it and hide the tooltip.
 
     
 
-                    if (selectedLink === this) {
+                            if (selectedLink === this) {
 
     
 
-                        return clearSelection();
+                                tooltip.style("opacity", 0).style("pointer-events", "none");
 
     
 
-                    }
+                                d3.select(selectedLink).attr("stroke-width", 2).attr("stroke-opacity", 0.6);
 
     
 
-        
+                                selectedLink = null;
 
     
 
-                    clearSelection();
+                                return;
 
     
 
-                    selectedLink = this;
+                            }
 
     
 
-        
+                
 
     
 
-                    d3.select(this).attr("stroke-width", 4).attr("stroke-opacity", 1);
+                            // If another link is selected, deselect it first.
 
     
 
-        
+                            if (selectedLink) {
 
     
 
-                    const referenceData = references[d.reference_id];
+                                d3.select(selectedLink).attr("stroke-width", 2).attr("stroke-opacity", 0.6);
 
     
 
-                    if (!referenceData) return;
+                            }
 
     
 
-        
+                            
 
     
 
-                    // Sort references by date, newest first
+                            // Set the new selected link and highlight it.
 
     
 
-                    referenceData.sort((a, b) => new Date(b.publication_date) - new Date(a.publication_date));
+                            selectedLink = this;
 
     
 
-        
+                            d3.select(this).attr("stroke-width", 4).attr("stroke-opacity", 1);
 
     
 
-                    let htmlContent = `<strong>${d.type}</strong>`;
+                
 
     
 
-                    if (d.details) {
+                            const referenceData = references[d.reference_id];
 
     
 
-                        htmlContent += `<br/>${d.details}`;
+                            if (!referenceData) {
 
     
 
-                    }
+                                tooltip.style("opacity", 0).style("pointer-events", "none");
 
     
 
-                    htmlContent += `<hr/>`;
+                                return;
 
     
 
-                    referenceData.forEach(ref => {
+                            }
 
     
 
-                        htmlContent += `<a href="${ref.url}" target="_blank">${ref.title}</a><br/>`;
+                
 
     
 
-                    });
+                            referenceData.sort((a, b) => new Date(b.publication_date) - new Date(a.publication_date));
 
     
 
-        
+                
 
     
 
-                    tooltip.html(htmlContent)
+                            let htmlContent = `<strong>${d.type}</strong>`;
 
     
 
-                        .style("left", (event.pageX + 15) + "px")
+                            htmlContent += `<hr/>`;
 
     
 
-                        .style("top", (event.pageY - 28) + "px")
+                            referenceData.forEach(ref => {
 
     
 
-                        .style("opacity", 1)
+                                htmlContent += `<a href="${ref.url}" target="_blank">${ref.title}</a><br/>`;
 
     
 
-                        .style("pointer-events", "auto");
+                            });
 
     
 
-                });
+                
+
+    
+
+                            tooltip.html(htmlContent)
+
+    
+
+                                .style("left", (event.pageX + 15) + "px")
+
+    
+
+                                .style("top", (event.pageY - 28) + "px")
+
+    
+
+                                .style("opacity", 1)
+
+    
+
+                                .style("pointer-events", "auto");
+
+    
+
+                        });
 
     
 
@@ -523,6 +693,9 @@ Promise.all([
 
     // RESET FUNCTIONALITY
     d3.select("#reset-button").on("click", () => {
+        // Clear any active display modes (isolation, selection)
+        clearDisplayModes();
+
         // Un-pin all nodes
         nodes.forEach(d => {
             d.fx = null;
