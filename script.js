@@ -723,11 +723,24 @@ Promise.all([
             const targetY = d.target.y - (dy * targetRadius) / distance;
 
             if (d.total_links_in_group > 1) {
-                const arcScale = 0.4;
-                const sweep = d.link_num % 2 === 1 ? 1 : 0;
-                const linkRad = d.link_num > 0 ? distance / (2.5 + (d.link_num * arcScale)) : distance;
-                return `M ${sourceX},${sourceY} A ${linkRad},${linkRad} 0 0,${sweep} ${targetX},${targetY}`;
+                const linkIndex = d.link_num;
+                const groupSize = d.total_links_in_group;
+                const symIndex = linkIndex - (groupSize - 1) / 2;
+
+                // Don't draw a straight line for the center link, give it a slight curve
+                if (symIndex === 0) {
+                    return `M ${sourceX},${sourceY} A ${distance * 2},${distance * 2} 0 0,1 ${targetX},${targetY}`;
+                }
+
+                const arcIntensity = 20;
+                const arcSeparation = arcIntensity / distance;
+                const curvature = 1 + Math.abs(symIndex) * arcSeparation;
+                const arcRadius = distance * curvature;
+                const sweep = symIndex > 0 ? 1 : 0;
+
+                return `M ${sourceX},${sourceY} A ${arcRadius},${arcRadius} 0 0,${sweep} ${targetX},${targetY}`;
             } else {
+                // Default for single links is a gentle curve
                 return `M ${sourceX},${sourceY} A ${distance},${distance} 0 0,1 ${targetX},${targetY}`;
             }
         });
