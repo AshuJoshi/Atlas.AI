@@ -181,5 +181,19 @@
       "title": "CoreWeave surges after top customer Microsoft reaffirms spending plans",
       "publication_date": "2025-05-01"
     }
+  ],
+  "microsoft_nscale": [
+    {
+      "url": "https://www.nscale.com/press-releases/nscale-microsoft-2025",
+      "title": "Nscale Contracts Approximately 200,000 NVIDIA GB300 GPUs with Microsoft to Deliver NVIDIA AI Infrastructure Across Europe and the U.S.",
+      "publication_date": "2025-10-15"
+    }
+  ],
+  "oracle_amd": [
+    {
+      "url": "https://www.oracle.com/news/announcement/ai-world-oracle-and-amd-expand-partnership-to-help-customers-achieve-next-generation-ai-scale-2025-10-14/",
+      "title": "Oracle and AMD Expand Partnership to Help Customers Achieve Next-Generation AI Scale",
+      "publication_date": "2025-10-14"
+    }
   ]
 }
