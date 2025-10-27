@@ -202,5 +202,17 @@
       "title": "Meta Announces Joint Venture with Funds Managed by Blue Owl Capital to Develop Hyperion Data Center",
       "publication_date": "2025-10-21"
     }
+  ],
+  "meta_arm_deal": [
+    {
+      "url": "https://www.theregister.com/2025/10/16/meta_arm_nvidia/",
+      "title": "Meta and Arm partner to optimize AI software for Nvidia CPUs",
+      "publication_date": "2025-10-16"
+    },
+    {
+      "url": "https://newsroom.arm.com/news/arm-meta-strategic-partnership",
+      "title": "Arm and Meta Deepen Strategic Partnership to Power the Next Era of AI Innovation",
+      "publication_date": "2025-10-16"
+    }
   ]
 }
