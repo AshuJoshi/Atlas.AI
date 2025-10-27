@@ -43,3 +43,5 @@ broadcom,openai,Custom ASIC,openai_broadcom_strategic
 coreweave,meta,Data Center,coreweave_meta
 nscale,microsoft,Data Center,microsoft_nscale
 amd,oracle,Hardware,oracle_amd
+blueowl,hyperion,Investment,hyperion_jv
+hyperion,meta,Data Center,hyperion_jv
