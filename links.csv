@@ -46,3 +46,5 @@ amd,oracle,Hardware,oracle_amd
 blueowl,hyperion,Investment,hyperion_jv
 hyperion,meta,Data Center,hyperion_jv
 arm,meta,Tech Partner,meta_arm_deal
+google,anthropic,Data Center,google_anthropic_expanded_deal
+google,anthropic,Custom ASIC,google_anthropic_expanded_deal
