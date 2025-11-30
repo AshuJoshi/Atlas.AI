@@ -113,7 +113,7 @@
     {
       "url": "https://openai.com/index/stargate-advances-with-partnership-with-oracle/",
       "title": "Stargate advances with 4.5 GW partnership with Oracle",
-      "publication_date": "205-07-22"
+      "publication_date": "2025-07-22"
     },
     {
       "url": "https://openai.com/index/five-new-stargate-sites/",
@@ -225,6 +225,65 @@
       "url": "https://www.anthropic.com/news/expanding-our-use-of-google-cloud-tpus-and-services",
       "title": "Expanding our use of Google Cloud TPUs and Services",
       "publication_date": "2025-10-23"
+    }
+  ],
+  "nebius_meta_deal": [
+    {
+      "url": "https://www.reuters.com/technology/ai-cloud-firm-nebius-signs-3-billion-deal-with-meta-posts-more-than-four-fold-2025-11-11/",
+      "title": "AI cloud firm Nebius signs $3 bln deal with Meta, posts more than four-fold jump in Q3 revenue",
+      "publication_date": "2025-11-11"
+    }
+  ],
+  "aws_openai_deal": [
+    {
+      "url": "https://www.aboutamazon.com/news/aws/aws-open-ai-workloads-compute-infrastructure",
+      "title": "AWS announces new partnership to power OpenAI's AI workloads",
+      "publication_date": "2025-11-12"
+    }
+  ],
+  "anthropic_50b_investment": [
+    {
+      "url": "https://www.anthropic.com/news/anthropic-invests-50-billion-in-american-ai-infrastructure",
+      "title": "Anthropic invests $50 billion in American AI infrastructure",
+      "publication_date": "2025-11-13"
+    },
+    {
+      "url": "https://www.fluidstack.io/about-us/blog/fluidstack-selected-by-anthropic-to-deliver-custom-data-centers-in-the-us",
+      "title": "Fluidstack selected by Anthropic to deliver custom data centers in New York and Texas",
+      "publication_date": "2025-11-13"
+    }
+  ],
+  "lambda_msft_deal": [
+    {
+      "url": "https://lambda.ai/blog/lambda-announces-multibillion-dollar-agreement-with-microsoft-to-deploy-ai-infrastructure-powered-by-tens-of-thousands-of-nvidia-gpus",
+      "title": "Lambda Announces Multibillion-Dollar Agreement With Microsoft to Deploy AI Infrastructure Powered by Tens of Thousands of NVIDIA GPUs",
+      "publication_date": "2025-11-14"
+    }
+  ],
+  "humain_partnerships": [
+    {
+      "url": "https://www.prnewswire.com/news-releases/humain-expands-strategic-partnership-with-nvidia-advancing-global-ai-infrastructure-with-xai-global-ai-and-aws-at-the-us-saudi-investment-forum-302620854.html",
+      "title": "HUMAIN Expands Strategic Partnership with NVIDIA, Advancing Global AI Infrastructure with xAI, Global AI, and AWS at the U.S.-Saudi Investment Forum",
+      "publication_date": "2025-11-17"
+    }
+  ],
+  "terawulf_fluidstack_jv": [
+    {
+      "url": "https://investors.terawulf.com/news-events/press-releases/detail/121/terawulf-expands-strategic-partnership-with-fluidstack",
+      "title": "TeraWulf Expands Strategic Partnership with Fluidstack Through New 168 MW AI Compute Joint Venture",
+      "publication_date": "2025-11-18"
+    }
+  ],
+  "msft_nvidia_anthropic_deal": [
+    {
+      "url": "https://blogs.microsoft.com/blog/2025/11/18/microsoft-nvidia-and-anthropic-announce-strategic-partnerships/",
+      "title": "Microsoft, NVIDIA and Anthropic announce strategic partnerships",
+      "publication_date": "2025-11-18"
+    },
+    {
+      "url": "https://www.axios.com/2025/11/18/anthropic-microsoft-nvidia-15-billion",
+      "title": "Anthropic hits $75B valuation in new deal with Microsoft, Nvidia",
+      "publication_date": "2025-11-18"
     }
   ]
 }

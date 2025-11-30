@@ -48,3 +48,16 @@ hyperion,meta,Data Center,hyperion_jv
 arm,meta,Tech Partner,meta_arm_deal
 google,anthropic,Data Center,google_anthropic_expanded_deal
 google,anthropic,Custom ASIC,google_anthropic_expanded_deal
+amazon,openai,Data Center,aws_openai_deal
+fluidstack,anthropic,Data Center,anthropic_50b_investment
+lambda,microsoft,Data Center,lambda_msft_deal
+nvidia,humain,Tech Partner,humain_partnerships
+humain,xai,Data Center,humain_partnerships
+amazon,humain,Data Center,humain_partnerships
+terawulf,fluidstack,Tech Partner,terawulf_fluidstack_jv
+google,fluidstack,Investment,terawulf_fluidstack_jv
+microsoft,anthropic,Investment,msft_nvidia_anthropic_deal
+nvidia,anthropic,Investment,msft_nvidia_anthropic_deal
+microsoft,anthropic,Data Center,msft_nvidia_anthropic_deal
+nvidia,anthropic,Tech Partner,msft_nvidia_anthropic_deal
+nebius,meta,Data Center,nebius_meta_deal
